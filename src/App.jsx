@@ -1,14 +1,21 @@
 import SideBar from "./components/SideBar"
 import Main from "./components/Main"
 import Footer from "./components/Footer"
-import { useState } from "react"
+import { use, useState } from "react"
 
 function App() {
+
+  const [showModal, setShowModal] = useState(false)
+
+  function handleToggleModal() {
+    setShowModal(!showModal)
+  }
 
   return (
     <>
       <Main />
-      <Footer />
+      {showModal && (<SideBar handleToggleModal={handleToggleModal}/>)}
+      <Footer handleToggleModal={handleToggleModal} />
     </>
   )
 }
